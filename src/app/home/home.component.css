@@ -1,0 +1,12 @@
+.mat-card{
+  display: flex;
+  justify-content: center;
+  width: 10cm;
+  margin-left: 10cm;
+}
+.WSCard{
+  display: flex;
+  justify-content: center;
+  width: 10cm;
+  margin-left: 25cm;
+}

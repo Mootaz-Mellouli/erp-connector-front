@@ -1,0 +1,32 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+
+}
+
+.mat-form-field {
+  margin-top: 16px;
+padding-left: 9cm;
+}
+
+.mat-card{
+  display: flex;
+  justify-content: center;
+  width: 23cm;
+  margin-left: 10cm;
+  margin-top: 0.5cm;
+}
+.btn{
+  padding-left: 9cm;
+}
+
+.parent {
+  margin: 1rem;
+  padding: 2rem 2rem;
+}
+.child {
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: middle;
+}
+
+

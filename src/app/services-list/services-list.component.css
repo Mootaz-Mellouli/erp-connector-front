@@ -1,0 +1,14 @@
+.mat-table{
+  justify-content: center;
+  width: 25cm;
+  margin-left: 8cm;
+  margin-top: 0.5cm;
+}
+.mat-column-Action{
+  width: 5cm;
+  text-align: center;
+}
+.buttons{
+  display: flex;
+  height: 55px;
+}

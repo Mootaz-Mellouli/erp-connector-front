@@ -1,0 +1,32 @@
+<mat-sidenav-container >
+  <mat-sidenav mode="side" opened>
+   <h1>
+     ERP-Connector
+   </h1>
+   <mat-divider></mat-divider>
+   <div class="home">
+   <button mat-button class="menu-button" routerLink="/">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+  <button mat-button [matMenuTriggerFor]="menu" class="menu-button">
+    <mat-icon>storage</mat-icon>
+    Database connection
+  </button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/dbConnection">Create database connection</button>
+  <button mat-menu-item routerLink="/dbList">List of database connections</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="ServiceMenu" class="menu-button">
+  <mat-icon>web</mat-icon>
+  Web Service Managment</button>
+<mat-menu #ServiceMenu="matMenu">
+  <button mat-menu-item routerLink="/addService">Create Web Service</button>
+  <button mat-menu-item routerLink="/servicesList">List Of Web Services</button>
+</mat-menu>
+  </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+

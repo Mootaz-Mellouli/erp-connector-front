@@ -1,0 +1,98 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="webServiceForm" (ngSubmit)="onSubmit()">
+    <mat-stepper orientation="vertical" formArrayName="formArray" linear  #stepper>
+      <!----------------- STEP 1 --------------->
+       <mat-step class="parent" formGroupName="0" [stepControl]="$any(formArray?.get([0]))">
+          <ng-template matStepLabel>Database</ng-template>
+          <mat-form-field class="child" appearance="fill">
+            <mat-label>Service name/details</mat-label>
+            <input [(ngModel)]="service_name" matInput formControlName="service_name" required>
+          </mat-form-field>
+          <mat-form-field class="child" appearance="fill">
+              <mat-label>Choose Database</mat-label>
+              <mat-select [(ngModel)]="dbName" formControlName="database" required>
+                <mat-option *ngFor="let food of db" [value]="food.db_name">
+                  {{food.db_name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          <div class="btn">
+            <button (click)="getDatabaseTablesInfo()" type="button" mat-button matStepperNext>Next</button>
+          </div>
+      </mat-step>
+      <!----------------- STEP 2 --------------->
+      <mat-step  formGroupName="1" [stepControl]="$any(formArray?.get([1]))">
+          <ng-template matStepLabel>Table</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Table name</mat-label>
+            <mat-select [(ngModel)]="tableName" formControlName="table" required>
+              <mat-option *ngFor="let food of dbTableInfo" [value]="food.table_name">
+                {{food.table_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="btn">
+            <button type="button" mat-button matStepperPrevious>Back</button>
+            <button (click)="getDatabaseRowsInfo()" type="button"  mat-button matStepperNext>Next</button>
+          </div>
+      </mat-step>
+      <!----------------- STEP 3 --------------->
+      <mat-step  formGroupName="2" [stepControl]="$any(formArray?.get([2]))">
+          <ng-template matStepLabel>Row</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Row name</mat-label>
+            <mat-select [(ngModel)]="columnName" formControlName="columns" required multiple>
+              <mat-option *ngFor="let food of dbRowInfo" [value]="food.column_name">
+                {{food.column_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="btn">
+            <button type="button" mat-button matStepperPrevious>Back</button>
+            <button type="button" mat-button matStepperNext>Next</button>
+          </div>
+      </mat-step>
+      <!----------------- STEP 4 --------------->
+      <mat-step class="parent" formGroupName="3" [stepControl]="$any(formArray?.get([3]))">
+          <ng-template matStepLabel>Input</ng-template>
+          <mat-form-field appearance="fill" class="child">
+            <mat-label>Input Column</mat-label>
+            <mat-select [(ngModel)]="inputColumn" formControlName="inputColumns" required>
+              <mat-option *ngFor="let food of dbRowInfo" [value]="food.column_name">
+                {{food.column_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="child">
+            <mat-label>Operator</mat-label>
+            <mat-select [(ngModel)]="operator" formControlName="operator" required>
+              <mat-option *ngFor="let food of operators" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="child">
+            <mat-label>Input Value </mat-label>
+            <input [(ngModel)]="inputValue" matInput formControlName="inputvalue" required>
+          </mat-form-field>
+          <div class="btn">
+            <button type="button" mat-button matStepperPrevious>Back</button>
+            <button type="button" mat-button matStepperNext>Next</button>
+          </div>
+      </mat-step>
+      <!----------------- STEP 5 --------------->
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div class="btn">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button type="submit" >Valide</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+    </form>
+  </mat-card-content>
+</mat-card>
+
